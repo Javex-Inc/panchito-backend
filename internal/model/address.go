@@ -3,10 +3,10 @@ package model
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Address struct {
-	ID              primitive.ObjectID `json:"id"`
-	ZipCode         string             `json:"zipCode"`
-	Block           string             `json:"block"`
-	ResidentialUnit string             `json:"residential_unit"`
-	Number          string             `json:"number"`
-	Sector          string             `json:"sector"`
+	ID              primitive.ObjectID `json:"id" bson:"_id"`
+	ZipCode         string             `json:"zipCode" bson:"zipcode"`
+	Block           string             `json:"block" bson:"block"`
+	ResidentialUnit string             `json:"residential_unit" bson:"residential_unit"`
+	Number          string             `json:"number" bson:"number"`
+	Sector          string             `json:"sector" bson:"sector"`
 }

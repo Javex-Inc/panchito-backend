@@ -7,11 +7,11 @@ import (
 )
 
 type Payment struct {
-	ID        primitive.ObjectID `json:"id"`
-	Method    string             `json:"method"`
-	IsPaid    bool               `json:"isPaid"`
-	Discount  float32            `json:"discount"`
-	Fee       float32            `json:"fee"`
-	Total     float32            `json:"total"`
-	Timestamp time.Time          `json:"timestamp"`
+	ID        primitive.ObjectID `json:"id" bson:"_id"`
+	Method    string             `json:"method" bson:"method"`
+	IsPaid    bool               `json:"isPaid" bson:"isPaid"`
+	Discount  float32            `json:"discount" bson:"discount"`
+	Fee       float32            `json:"fee" bson:"fee"`
+	Total     float32            `json:"total" bson:"total"`
+	Timestamp time.Time          `json:"timestamp" bson:"timestamp"`
 }
