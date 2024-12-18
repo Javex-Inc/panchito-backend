@@ -9,7 +9,7 @@ import (
 type Payment struct {
 	ID        primitive.ObjectID `json:"id"`
 	Method    string             `json:"method"`
-	Status    Status             `json:"status"`
+	IsPaid    bool               `json:"isPaid"`
 	Discount  float32            `json:"discount"`
 	Fee       float32            `json:"fee"`
 	Total     float32            `json:"total"`
