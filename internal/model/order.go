@@ -8,12 +8,12 @@ import (
 
 type Order struct {
 	ID         primitive.ObjectID `json:"id" bson:"_id"`
-	Number     int                `json:"number"`
-	ClientID   primitive.ObjectID `json:"client_id"`
-	Status     Status             `json:"status"`
-	IsDelivery bool               `json:"is_delivery"`
-	IsTakeaway bool               `json:"is_takeaway"`
-	Products   []Product          `json:"products"`
-	Payment    Payment            `json:"payment"`
-	Timestamp  time.Time          `json:"timestamp"`
+	Number     int                `json:"number" bson:"number"`
+	ClientID   primitive.ObjectID `json:"client_id" bson:"_client_id"` // its with "_" before!
+	Status     Status             `json:"status" bson:"status"`
+	IsDelivery bool               `json:"is_delivery" bson:"is_delivery"`
+	IsTakeaway bool               `json:"is_takeaway" bson:"is_takeaway"`
+	Products   []Product          `json:"products" bson:"products"`
+	Payment    Payment            `json:"payment" bson:"payment"`
+	Timestamp  time.Time          `json:"timestamp" bson:"timestamp"`
 }
