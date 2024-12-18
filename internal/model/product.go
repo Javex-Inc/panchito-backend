@@ -8,6 +8,6 @@ type Product struct {
 	Description string             `json:"description"`
 	Image       string             `json:"image"`
 	Price       float32            `json:"price"`
-	Category    string             `json:"category"`  // TODO: Will be Category type
-	IsOnOffer   bool               `json:"isOnOffer"` // When the product is on offer
+	Category    string             `json:"category"`    // TODO: Will be Category type
+	IsOnOffer   bool               `json:"is_on_offer"` // When the product is on offer
 }
