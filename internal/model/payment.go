@@ -7,7 +7,7 @@ import (
 )
 
 type Payment struct {
-	ID        primitive.ObjectID `json:"id" bson:"_id"`
+	ID        primitive.ObjectID `json:"id" bson:"_id,omitempty"`
 	Method    string             `json:"method" bson:"method"`
 	IsPaid    bool               `json:"isPaid" bson:"isPaid"`
 	Discount  float32            `json:"discount" bson:"discount"`

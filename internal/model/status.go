@@ -4,9 +4,9 @@ type Status string
 
 const (
 	PENDING   Status = "Pendente"
-	PREPARING        = "Preparando"
-	READY            = "Pronto"
-	UNDERWAY         = "A caminho"
-	DELIVERED        = "Entregue"
-	CANCELED         = "Cancelado"
+	PREPARING Status = "Preparando"
+	READY     Status = "Pronto"
+	UNDERWAY  Status = "A caminho"
+	DELIVERED Status = "Entregue"
+	CANCELED  Status = "Cancelado"
 )
