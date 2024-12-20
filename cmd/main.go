@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"log"
 
+	"github.com/Javex-Inc/panchito-backend/internal/database"
 	"github.com/Javex-Inc/panchito-backend/internal/utils"
 )
 
@@ -13,5 +13,8 @@ func main() {
 		log.Fatalf("failed to load .env variables: %w", err)
 	}
 
-	fmt.Println("Hello World!")
+	err = database.Connect()
+	if err != nil {
+		log.Fatalf("failed to connect to database: %w", err)
+	}
 }
