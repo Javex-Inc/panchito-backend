@@ -1,7 +1,16 @@
 package utils
 
-import "github.com/joho/godotenv"
+import (
+	"fmt"
 
-func LoadEnv() {
-	godotenv.Load(".env")
+	"github.com/joho/godotenv"
+)
+
+func LoadEnv() error {
+	err := godotenv.Load(".env")
+	if err != nil {
+		return fmt.Errorf("failed to load .env variables: %w", err)
+	}
+
+	return nil
 }
