@@ -1,5 +1,7 @@
 package utils
 
-import "https://github.com/bkeepers/dotenv"
+import "github.com/joho/godotenv"
 
-godotenv.Load()
+func LoadEnv() {
+	godotenv.Load(".env")
+}
