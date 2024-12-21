@@ -6,11 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-type APIService struct {
-	router *fiber.App
-}
-
-func NewAPIService() {
+func StartServer() {
 	app := fiber.New()
 	port := os.Getenv("SERVER_PORT")
 
@@ -18,5 +14,5 @@ func NewAPIService() {
 		return c.SendString("Hello world!")
 	})
 
-	app.Listen(port)
+	app.Listen(":" + port)
 }
