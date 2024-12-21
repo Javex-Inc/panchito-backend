@@ -10,11 +10,11 @@ import (
 func main() {
 	err := utils.LoadEnv()
 	if err != nil {
-		log.Fatalf("failed to load .env variables: %w", err)
+		log.Fatalf("failed to load .env variables: %v", err)
 	}
 
 	err = database.Connect()
 	if err != nil {
-		log.Fatalf("failed to connect to database: %w", err)
+		log.Fatalf("failed to connect to database: %v", err)
 	}
 }
