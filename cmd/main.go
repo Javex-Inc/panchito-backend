@@ -19,5 +19,5 @@ func main() {
 		log.Fatalf("failed to connect to database: %v", err)
 	}
 
-	service.StartServer()
+	service.StartServer(database.Client)
 }
