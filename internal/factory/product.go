@@ -1,6 +1,9 @@
 package factory
 
-import "github.com/Javex-Inc/panchito-backend/internal/model"
+import (
+	"github.com/Javex-Inc/panchito-backend/internal/model"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type ProductFactory struct{}
 
@@ -10,6 +13,7 @@ func NewProductFactory() *ProductFactory {
 
 func (p *ProductFactory) CreateProduct(name, description, image, category string, price float32, isOnOffer bool) *model.Product {
 	return &model.Product{
+		ID:          primitive.NewObjectID(),
 		Name:        name,
 		Description: description,
 		Image:       image,
