@@ -11,12 +11,12 @@ import (
 func StartServer(client *mongo.Client) {
 	app := fiber.New()
 	port := os.Getenv("SERVER_PORT")
+
 	ch := handler.NewClientHandler(client)
 	ph := handler.NewProductHandler(client)
 
-	app.Post("/register", ch.CreateClient)
-
-	app.Post("/registerProduct", ph.CreateProduct)
+	app.Post("/register/client", ch.CreateClient)
+	app.Post("/register/product", ph.CreateProduct)
 
 	app.Listen(":" + port)
 }
