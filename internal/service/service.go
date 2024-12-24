@@ -18,7 +18,5 @@ func StartServer(client *mongo.Client) {
 	app.Post("/register/client", ch.CreateClient)
 	app.Post("/register/product", ph.CreateProduct)
 
-	// teste do webhook
-
 	app.Listen(":" + port)
 }
