@@ -21,7 +21,7 @@ func NewClientRepository(client *mongo.Client, dbName string, collection string)
 func (c *ClientRepository) InsertClient(client *model.Client) error {
 	_, err := c.collection.InsertOne(context.Background(), client)
 	if err != nil {
-		fmt.Errorf("error trying to insert user into the collection: %w", err)
+		return fmt.Errorf("error trying to insert user into the collection: %w", err)
 	}
 
 	return nil

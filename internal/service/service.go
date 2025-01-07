@@ -17,6 +17,7 @@ func StartServer(client *mongo.Client) {
 
 	app.Post("/register/client", ch.CreateClient)
 	app.Post("/register/product", ph.CreateProduct)
+	app.Get("/products", ph.GetAllProducts)
 
 	app.Listen(":" + port)
 }

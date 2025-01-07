@@ -11,7 +11,7 @@ func NewProductFactory() *ProductFactory {
 	return &ProductFactory{}
 }
 
-func (p *ProductFactory) CreateProduct(name, description, image, category string, price float32, isOnOffer bool) *model.Product {
+func (p *ProductFactory) CreateProduct(name, description, image, category string, price float64, isOnOffer bool) *model.Product {
 	return &model.Product{
 		ID:          primitive.NewObjectID(),
 		Name:        name,

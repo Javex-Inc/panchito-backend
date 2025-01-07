@@ -20,6 +20,18 @@ func NewProductHandler(client *mongo.Client) *ProductHandler {
 	}
 }
 
+func (ph *ProductHandler) GetAllProducts(c *fiber.Ctx) error {
+	products, err := ph.repository.GetAllProducts()
+	if err != nil {
+		return c.Status(500).JSON(fiber.Map{
+			"message": "failed to find all products",
+			"error":   err.Error(),
+		})
+	}
+
+	return c.Status(200).JSON(products)
+}
+
 func (ph *ProductHandler) CreateProduct(c *fiber.Ctx) error {
 	var productBody model.Product
 
