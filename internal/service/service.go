@@ -5,6 +5,7 @@ import (
 
 	"github.com/Javex-Inc/panchito-backend/internal/handler"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -14,6 +15,11 @@ func StartServer(client *mongo.Client) {
 
 	ch := handler.NewClientHandler(client)
 	ph := handler.NewProductHandler(client)
+
+	app.Use(cors.New(cors.Config{
+		AllowOrigins: "*",
+		AllowHeaders: "Origin, Content-Type, Accept",
+	}))
 
 	app.Post("/register/client", ch.CreateClient)
 	app.Post("/register/product", ph.CreateProduct)
