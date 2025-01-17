@@ -15,6 +15,7 @@ func StartServer(client *mongo.Client) {
 
 	ch := handler.NewClientHandler(client)
 	ph := handler.NewProductHandler(client)
+	oh := handler.NewOrderHandler(client)
 
 	app.Use(cors.New(cors.Config{
 		AllowOrigins: "*",
@@ -23,6 +24,7 @@ func StartServer(client *mongo.Client) {
 
 	app.Post("/register/client", ch.CreateClient)
 	app.Post("/register/product", ph.CreateProduct)
+	app.Post("register/order", oh.CreateOrder)
 	app.Get("/products", ph.GetAllProducts)
 
 	app.Listen(":" + port)
