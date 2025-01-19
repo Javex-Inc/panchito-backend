@@ -6,6 +6,7 @@ import (
 	"strconv"
 
 	"github.com/Javex-Inc/panchito-backend/internal/factory"
+	"github.com/Javex-Inc/panchito-backend/internal/model"
 	"github.com/Javex-Inc/panchito-backend/internal/repository"
 	"github.com/cloudinary/cloudinary-go/v2"
 	"github.com/cloudinary/cloudinary-go/v2/api/uploader"
@@ -74,7 +75,7 @@ func (ph *ProductHandler) CreateProduct(c *fiber.Ctx) error {
 		})
 	}
 
-	product := ph.factory.CreateProduct(name, description, uploadResult.SecureURL, category, price, isOnOffer)
+	product := ph.factory.CreateProduct(name, description, uploadResult.SecureURL, model.Category(category), price, isOnOffer)
 	err = ph.repository.InsertProduct(product)
 
 	if err != nil {
