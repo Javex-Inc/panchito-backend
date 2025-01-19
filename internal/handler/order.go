@@ -24,6 +24,14 @@ func (oh *OrderHandler) CreateOrder(c *fiber.Ctx) error {
 	var orderBody model.Order
 
 	err := c.BodyParser(&orderBody)
+	if err != nil {
+		return c.Status(500).JSON(fiber.Map{
+			"message": "internal server error",
+		})
+	}
+
+	order := oh.factory.CreateOrder(orderBody.Number, orderBody.Status, orderBody.IsDelivery, orderBody.IsTakeaway, orderBody.Products, orderBody.Payment)
+	err = oh.repository.CreateOrder(order)
 
 	if err != nil {
 		return c.Status(500).JSON(fiber.Map{
