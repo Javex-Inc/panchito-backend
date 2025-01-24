@@ -43,3 +43,20 @@ func (oh *OrderHandler) CreateOrder(c *fiber.Ctx) error {
 		"message": "success",
 	})
 }
+
+func (oh *OrderHandler) GetAllOrders(c *fiber.Ctx) error {
+	var orders []model.Order
+
+	res, err := oh.repository.GetAllOrders()
+	if err != nil {
+		return c.Status(500).JSON(fiber.Map{
+			"code":        500,
+			"message":     "internal server error",
+			"description": err,
+		})
+	}
+
+	orders = res
+
+	return c.Status(200).JSON(orders)
+}
