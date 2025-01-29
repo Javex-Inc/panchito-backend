@@ -5,6 +5,8 @@ import (
 	"fmt"
 
 	"github.com/Javex-Inc/panchito-backend/internal/model"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -25,4 +27,17 @@ func (c *ClientRepository) InsertClient(client *model.Client) error {
 	}
 
 	return nil
+}
+
+func (c *ClientRepository) FindClientByID(clientID primitive.ObjectID) (*model.Client, error) {
+	var client *model.Client
+
+	result := c.collection.FindOne(context.Background(), bson.M{"_id": clientID})
+
+	err := result.Decode(&client)
+	if err != nil {
+		return nil, err
+	}
+
+	return client, nil
 }

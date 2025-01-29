@@ -13,16 +13,17 @@ func NewOrderFactory() *OrderFactory {
 	return &OrderFactory{}
 }
 
-func (*OrderFactory) CreateOrder(number int, status model.Status, isDelivery, isTakeaway bool, products []model.Product, payment model.Payment) *model.Order {
+func (*OrderFactory) CreateOrder(number int, clientID primitive.ObjectID, status model.Status, isDelivery, isTakeaway bool, products []model.Product, payment model.Payment, total float64) *model.Order {
 	return &model.Order{
-		ID:     primitive.NewObjectID(),
-		Number: number,
-		//ClientID: ClientID,
+		ID:         primitive.NewObjectID(),
+		Number:     number,
+		ClientID:   clientID,
 		Status:     status,
 		IsDelivery: isDelivery,
 		IsTakeaway: isTakeaway,
 		Products:   products,
 		Payment:    payment,
 		Timestamp:  time.Time{},
+		Total:      total,
 	}
 }
